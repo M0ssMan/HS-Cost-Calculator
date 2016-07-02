@@ -3,13 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" text="text/css" href="style.css"></script>
   </head>
   <body ng-app="HScards">
     <h3>Search</h3>
     <div ng-controller="CardsController">
-      <input type='text'name='search' ng-model='cardSearch' placeholder="Search for Cards"></input>
-      <button ng-Click="getCollection()">Get Collection</button>
+      <form novalidate>
+        <input type='text'name='search' ng-model='cardSearch' placeholder="Search for Cards"></input>
+        <button ng-Click="searchCollection()">Search</button>
+      </form>
       <h1>{{cardSearch}}</h1>
+      <div class="cardimage" ng-repeat="card in searchResults">
+        <img src={{card.img}}>
+        <h5>Will cost you ${{card.dollarCost}}</h5>
+        <h5>Or</h5>
+        <h5>{{card.grindTime}} days playing for 1 hour</h5>
+      </div>
     </div>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src='HScards/Services/HScards-services.js'></script>

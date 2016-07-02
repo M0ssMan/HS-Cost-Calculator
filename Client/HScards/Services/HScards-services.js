@@ -1,17 +1,22 @@
 angular.module('HScards-services', [])
   .factory('apiCall', function($http){
-    // var getCollection = function(){
-    //   return $http({
-    //     method: "GET",
-    //     url: 'api/collection'
-    //   })
-    //  }
-    var getCollection = function(){
-      console.log('pushed button');
 
+    var getCollection = function(){
+        return $http({
+          method: "GET",
+          url: 'getCollection'
+        })
+    }
+
+    var searchCollection = function(query){
+      return $http({
+        method: "GET",
+        url: 'searchCollection/' + query
+      })
     }
 
     return {
-      getCollection: getCollection
+      getCollection: getCollection,
+      searchCollection: searchCollection
     }
   })
