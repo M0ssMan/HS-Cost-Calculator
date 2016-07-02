@@ -2,35 +2,38 @@
 
 var express = require('express');
 var request = require('request');
-var mashKey = require('./apiKey');
+//var mashKey = require('./apiKey');
+var mashKey = process.env.mashKey;
 var url = require('url');
 //var birds = require('./birds');
 
 var app = express();
 
-app.set('port', 8080);
+var portSet = process.env.PORT || 8080;
+
+app.set('port', portSet);
 
 app.use('/', function(req, res, next){
   console.log('Received a ' + req.method + ' request on URL ' + req.path);
   next();
 }, express.static('./../client'));
 
-app.use('/getCollection', function(req, res, next){
-  request.get('https://omgvamp-hearthstone-v1.p.mashape.com/cards', {
-    headers: {
-      'x-mashape-key': mashKey
-    }
-  }, function(error, resp, body){
-          if(!error && resp.statusCode === 200){
-            console.log(body);
-            res.send("all good");
-          } else {
-            console.log(error);
-            console.log(resp.statusCode);
-            res.send('there was an error');
-          }
-    })
-})
+// app.use('/getCollection', function(req, res, next){
+//   request.get('https://omgvamp-hearthstone-v1.p.mashape.com/cards', {
+//     headers: {
+//       'x-mashape-key': mashKey
+//     }
+//   }, function(error, resp, body){
+//           if(!error && resp.statusCode === 200){
+//             console.log(body);
+//             res.send("all good");
+//           } else {
+//             console.log(error);
+//             console.log(resp.statusCode);
+//             res.send('there was an error');
+//           }
+//     })
+// })
 
 app.use('/searchCollection', function(req, res, next){
   console.log('request for search fired');

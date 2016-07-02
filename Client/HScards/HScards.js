@@ -21,8 +21,8 @@ angular.module('HScards', [
     function addCostAnalysis(cardObjArray){
       cardObjArray.forEach(function(cardObj){
         dustConversion(cardObj);
-        cardObj.grindTime = Math.ceil(cardObj.dustCost / 60) || "No Time";
-        cardObj.dollarCost = (cardObj.dustCost / 100).toFixed(2);
+        cardObj.grindTime = grindTime(cardObj.dustCost);
+        cardObj.dollarCost = dollarCost(cardObj.dustCost);
       });
     };
 
@@ -35,6 +35,26 @@ angular.module('HScards', [
         'Free': 0
       }
       cardObj.dustCost = rarityConvert[cardObj.rarity];
+    }
+
+    function grindTime(dustCost){
+      var days = 'day';
+      var daysAmount = Math.ceil(dustCost / 60)
+      if(daysAmount){
+        if(daysAmount > 1){
+          days = "days"
+        }
+        return "Play " + daysAmount + " " + days + " for 1 hour/day"
+      }
+      return "No time.";
+    }
+
+    function dollarCost(dustCost){
+      var money = (dustCost / 100).toFixed(2);
+      if(money > 0) {
+        return "Costs $" + money;
+      }
+      return "It's Free";
     }
 
   })

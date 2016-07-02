@@ -1,13 +1,8 @@
 .cardimage {
 display: inline-block;
-background-color: green;
 }
 
-img {
-  background-color: red;
-}
 
 h5 {
   text-align: center;
-  background-color: yellow;
 }

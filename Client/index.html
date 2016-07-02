@@ -6,18 +6,18 @@
     <link rel="stylesheet" text="text/css" href="style.css"></script>
   </head>
   <body ng-app="HScards">
-    <h3>Search</h3>
+    <h1>Hearthstone Card Costs</h1>
     <div ng-controller="CardsController">
       <form novalidate>
         <input type='text'name='search' ng-model='cardSearch' placeholder="Search for Cards"></input>
         <button ng-Click="searchCollection()">Search</button>
       </form>
-      <h1>{{cardSearch}}</h1>
+      <h5>Showing Search Results for {{cardSearch}}</h5>
       <div class="cardimage" ng-repeat="card in searchResults">
         <img src={{card.img}}>
-        <h5>Will cost you ${{card.dollarCost}}</h5>
+        <h5>{{card.dollarCost}}</h5>
         <h5>Or</h5>
-        <h5>{{card.grindTime}} days playing for 1 hour</h5>
+        <h5>{{card.grindTime}}</h5>
       </div>
     </div>
     <script src="bower_components/angular/angular.min.js"></script>
