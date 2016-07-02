@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="HScards">
+    <h3>Search</h3>
+    <div ng-controller="CardsController">
+      <input type='text'name='search' ng-model='cardSearch' placeholder="Search for Cards"></input>
+      <button ng-Click="getCollection()">Get Collection</button>
+      <h1>{{cardSearch}}</h1>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src='HScards/Services/HScards-services.js'></script>
+    <script src="HScards/HScards.js"></script>
+  </body>
+</html>

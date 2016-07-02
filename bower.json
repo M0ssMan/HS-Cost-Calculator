@@ -1,0 +1,14 @@
+{
+  "name": "mvp",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "M0ss Man <ghostreader45@hotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.7"
+  }
+}
